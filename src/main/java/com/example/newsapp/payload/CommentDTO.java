@@ -14,7 +14,7 @@ public class CommentDTO {
 
     @NotNull(message = "text Required")
     private String text;
-    
+
     @NotNull(message = "id Required")
         private Long postId;
 }

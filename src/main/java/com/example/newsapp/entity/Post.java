@@ -7,9 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -27,6 +26,9 @@ public class Post extends AbsEntity {
 
     @Column(columnDefinition = "text")
     private String url;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comments> comments;
 
 
 }

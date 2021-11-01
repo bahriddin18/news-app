@@ -53,7 +53,7 @@ public class CommentService {
     }
 
 
-    public ApiResponse deleteMyComment(Long id) {
+    public ApiResponse deleteMyComment(Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Optional<Comments> optionalComment = commentRepository.findById(id);
@@ -62,13 +62,13 @@ public class CommentService {
             return new ApiResponse("Comment not found!", false);
 
         if (!optionalComment.get().getCreatedBy().getUsername().equals(user.getUsername()))
-            return new ApiResponse("You can delete only your comments!", false);
+            return new ApiResponse("You can delete only your comment", false);
 
         commentRepository.deleteById(id);
         return new ApiResponse("Deleted", true);
     }
 
-    public ApiResponse delete(Long id) {
+    public ApiResponse delete(Long id){
 
         Optional<Comments> optionalComment = commentRepository.findById(id);
 
@@ -78,7 +78,6 @@ public class CommentService {
         commentRepository.deleteById(id);
         return new ApiResponse("Deleted", true);
     }
-
     public ApiResponse getById(Long id) {
         Optional<Comments> commentOptional = commentRepository.findById(id);
         return commentOptional.map(post -> new ApiResponse("Comment deleted", true, post)).orElseGet(() -> new ApiResponse("Comment not found", false));

@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Configuration
 @EnableJpaAuditing
-public class KimYozganiniQaytaradi {
+public class ReturnWhoWrote {
     @Bean
-    AuditorAware<User> auditorAware(){
-        return new KimYozganiBilishUchun();
+    AuditorAware<User> auditorAware() {
+        return new WhoWrote();
     }
 }
