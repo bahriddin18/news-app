@@ -11,16 +11,16 @@ import java.util.Date;
 public class JwtProvider {
 
     long expireTime = 36000 * 1000;
-    String secretKey = "something";
+    String secretKey = "something"; // must be secret :)
 
     public String generateToken(String username, Role role) {
         return Jwts
                 .builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expireTime))
+                .setExpiration(new Date(System.currentTimeMillis() + expireTime)) // now ex: 2021 03 20 + 20 day >>> expireTime
                 .claim("role", role.getName())
-                .signWith(SignatureAlgorithm.HS512, secretKey)
+                .signWith(SignatureAlgorithm.HS512, secretKey) // Encode
                 .compact();
     }
 

@@ -12,5 +12,5 @@ public class ReturnWhoWrote {
     @Bean
     AuditorAware<User> auditorAware() {
         return new WhoWrote();
-    }
+    } // Who wrote
 }

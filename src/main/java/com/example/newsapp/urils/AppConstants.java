@@ -1,7 +1,7 @@
 package com.example.newsapp.urils;
 
 public interface AppConstants {
-    String USER = "User";
-    String ADMIN = "Admin";
+    String ADMIN = "Admin"; // 1
+    String USER = "User"; // 2
 
 }

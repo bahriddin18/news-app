@@ -17,5 +17,5 @@ public class PostDTO {
     @Column(nullable = false)
     private String text;
 
-    private String url;
+    private String url; // url is not nullable because service have default url
 }

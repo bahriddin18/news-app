@@ -19,7 +19,7 @@ import static com.example.newsapp.enums.Permissions.*;
 @Component
 @RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
-    @Value("${spring.sql.init.mode}")
+    @Value("${spring.sql.init.mode}") // spring.sql.init.mode= ( always or never )
     private String modeType;
 
     final UserRepository userRepository;
@@ -31,26 +31,30 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (modeType.equals("always")) {
+
             Permissions[] values = Permissions.values();
+
             Role admin = roleRepository.save(new Role(
                     AppConstants.ADMIN,
-                    Arrays.asList(values), "Admin all permissions"
+                    Arrays.asList(values), "Admin all permissions" // Get all permissions for admin
             ));
 
             Role user = roleRepository.save(new Role(
                     AppConstants.USER,
-                    Arrays.asList(ADD_COMMENT, EDIT_COMMENT, DELETE_MY_COMMENT, EDIT_MY_COMMENT), "User"
+                    Arrays.asList(ADD_COMMENT, EDIT_COMMENT, DELETE_MY_COMMENT, EDIT_MY_COMMENT), "User" // Get limited permissions for user
             ));
+
             userRepository.save(new User(
                     "Admin", "Admin", passwordEncoder.encode("123"), admin, true
-            ));
+            )); // Admin role
 
             userRepository.save(new User(
                     "User", "User", passwordEncoder.encode("123"), user, true
-            ));
+            )); // User role
 
 
         }
+        // else nothing...
     }
 
 }

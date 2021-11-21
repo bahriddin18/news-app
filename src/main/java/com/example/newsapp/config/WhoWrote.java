@@ -10,7 +10,7 @@ import java.util.Optional;
 public class WhoWrote implements AuditorAware<User> {
     @Override
     public Optional<User> getCurrentAuditor() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // Get current user
         if (authentication != null &&
                 authentication.isAuthenticated() &&
                 !authentication.getPrincipal().equals("anonymousUser")) {

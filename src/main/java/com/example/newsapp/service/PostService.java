@@ -21,9 +21,9 @@ public class PostService {
         Post post = new Post();
         post.setText(postDTO.getText());
         post.setTitle(postDTO.getTitle());
-        postRepository.save(post);
-        post.setUrl("http://localhost:80/api/post/" + post.getId());
-        postRepository.save(post);
+        postRepository.save(post); // save
+        post.setUrl("http://localhost:80/api/post/" + post.getId()); //  add url + id
+        postRepository.save(post); // again save
         return new ApiResponse("Added", true);
     }
 

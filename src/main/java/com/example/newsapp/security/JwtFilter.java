@@ -29,7 +29,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String token = httpServletRequest.getHeader("Authorization");
         if (token != null && token.startsWith("Bearer")) {
-            token = token.substring(7);
+            token = token.substring(7); //  ( Bearer < ...
             boolean validateToken = jwtProvider.validateToken(token);
 
             if (validateToken) {
@@ -40,8 +40,8 @@ public class JwtFilter extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken passwordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(passwordAuthenticationToken);
                 SecurityContextHolder.getContext().setAuthentication(passwordAuthenticationToken);
-            }
+            } // else nothing
         }
-        filterChain.doFilter(httpServletRequest, httpServletResponse);
+        filterChain.doFilter(httpServletRequest, httpServletResponse); // filter
     }
 }
