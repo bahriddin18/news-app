@@ -1,0 +1,55 @@
+###
+// Login
+POST http://localhost:80/api/auth/login
+Content-Type: application/json
+
+{
+  "userName": "Admin",
+  "password": "123"
+}
+
+###
+
+// Register
+POST http://localhost:80/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "userName": "java777",
+  "password": "123",
+  "prePassword": "123"
+}
+
+###
+
+// Add new Post
+POST http://localhost:80/api/post
+Content-Type: application/json
+Authorization: Bearer ...
+
+{
+  "title": "Java",
+  "text": "Hello world!"
+}
+
+###
+
+// Add role
+POST http://localhost:80/api/role
+Content-Type: application/json
+Authorization: Bearer ...
+
+{
+  "name": "HR",
+  "description": "Bla bla bal",
+  "permissions": [
+    "ADD_USER",
+    "EDIT_USER",
+    "DELETE_USER",
+    "GET_USER",
+    "GET_USERS"
+  ]
+}
+
+###
